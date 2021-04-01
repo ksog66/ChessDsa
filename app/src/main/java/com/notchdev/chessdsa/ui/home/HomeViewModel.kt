@@ -17,9 +17,9 @@ class HomeViewModel : ViewModel() {
     private var _count = MutableLiveData<Int>()
     val count: LiveData<Int> = _count
     private val visited = Array(5) { Array(5) { false } }
-    private var _currX = MutableLiveData<Int>(0)
+    private var _currX = MutableLiveData(0)
     val currX: LiveData<Int> = _currX
-    private var _currY = MutableLiveData<Int>(0)
+    private var _currY = MutableLiveData(0)
     val currY: LiveData<Int> = _currY
 
     private var noOfMoves: Int = 0
@@ -94,5 +94,18 @@ class HomeViewModel : ViewModel() {
                 continue
         }
         return false
+    }
+    fun initializeGame() {
+        for (i in 0..4) {
+            for (j in 0..4) {
+                visited[i][j] = false
+            }
+        }
+        prevX = 0
+        prevY = 0
+        noOfMoves = 0
+        _currX.value = 0
+        _currY.value = 0
+        _count.value = 0
     }
 }
