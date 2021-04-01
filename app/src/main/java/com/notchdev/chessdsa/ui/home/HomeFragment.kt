@@ -5,17 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.imageview.ShapeableImageView
 import com.notchdev.chessdsa.R
 import com.notchdev.chessdsa.databinding.FragmentHomeBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 private const val TAG="HomeFragment"
 class HomeFragment : Fragment(),View.OnClickListener {
@@ -23,13 +19,10 @@ class HomeFragment : Fragment(),View.OnClickListener {
     private lateinit var viewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
     private var safeToMove:Boolean  =false
-    private lateinit var boardBtn:Array<Array<Button>>
-    private val visited =Array(5) {Array(5) {false} }
+    private lateinit var boardBtn:Array<Array<ShapeableImageView>>
     private var prevX :Int =0
     private var prevY :Int =0
     private var noOfMoves:Int =0
-    private var xDir= arrayOf(-2,-2,-1,-1,2,2,1,1)
-    private var yDir =arrayOf(1,-1,2,-2,-1,1,-2,2)
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -39,8 +32,6 @@ class HomeFragment : Fragment(),View.OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
         binding.apply {
@@ -72,6 +63,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
             }
         }
         boardBtn[0][0].isEnabled=false
+        viewModel =
+            ViewModelProvider(this).get(HomeViewModel::class.java)
     }
     override fun onClick(view: View) {
         when(view.id){
@@ -152,7 +145,27 @@ class HomeFragment : Fragment(),View.OnClickListener {
             Log.d(TAG, "InvalidMove")
             Toast.makeText(requireContext(), "InvalidMove", Toast.LENGTH_SHORT).show()
         }
-//        checkIfMovesPossible()
+        checkIfMovesPossible()
+    }
+
+    private fun checkIfMovesPossible() {
+        val isItPossible = viewModel.checkMovePossible()
+        if(!isItPossible) {
+            MaterialAlertDialogBuilder(requireContext()).apply {
+                setMessage("Game Over")
+                setPositiveButton("Play Again") {_,_ ->
+                    initializeBoard()
+                }
+                setNegativeButton("Home") {dialog,_ ->
+//                    navigateToHome()
+                    dialog.dismiss()
+                    initializeBoard()
+                }
+                setCancelable(false)
+                create()
+                show()
+            }
+        }
     }
 
     private fun getSafeOrNot(x: Int, y: Int) {
@@ -168,10 +181,29 @@ class HomeFragment : Fragment(),View.OnClickListener {
                 noOfMoves = it
             }
         }
-        if(safeToMove)
-            boardBtn[x][y].isEnabled = false
+        if(safeToMove){
+            boardBtn[x][y].apply {
+                isEnabled = false
+                setImageResource(R.drawable.knight_on_grass)
+            }
+            updatePreviousMoveImage()
+        }
     }
-    
+
+    private fun updatePreviousMoveImage() {
+        viewModel.currX.observe({lifecycle}) {
+            it?.let{
+                prevX= it
+            }
+        }
+        viewModel.currY.observe({lifecycle}) {
+            it?.let{
+                prevY = it
+            }
+        }
+        boardBtn[prevX][prevY].setImageResource(R.drawable.grass_dry)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

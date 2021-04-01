@@ -17,9 +17,14 @@ class HomeViewModel : ViewModel() {
     private var _count = MutableLiveData<Int>()
     val count: LiveData<Int> = _count
     private val visited = Array(5) { Array(5) { false } }
-    private var prevX: Int = 0
-    private var prevY: Int = 0
+    private var _currX = MutableLiveData<Int>(0)
+    val currX: LiveData<Int> = _currX
+    private var _currY = MutableLiveData<Int>(0)
+    val currY: LiveData<Int> = _currY
+
     private var noOfMoves: Int = 0
+    private var prevX = 0
+    private var prevY = 0
     private var xDir = arrayOf(-2, -2, -1, -1, 2, 2, 1, 1)
     private var yDir = arrayOf(1, -1, 2, -2, -1, 1, -2, 2)
 
@@ -28,7 +33,7 @@ class HomeViewModel : ViewModel() {
 //            val validMoveAccToPrevMove = prevMoveValidation(x,y)
 //            val validCoordinateMoves = validCoordinateMove(x,y)
 //            if (validMoveAccToPrevMove and validCoordinateMoves){
-//                prevX=x
+//                prevX=xTODO("Not yet implemented")
 //                prevY=y
 //                visited[x][y]=true
 //                _isSafe.value = true
@@ -52,6 +57,8 @@ class HomeViewModel : ViewModel() {
         Log.d("viewModel", "prevMoveValidation: $validMoveAccToPrevMove")
         Log.d("viewModel", "validMove: $validCoordinateMoves")
         if (validCoordinateMoves and validMoveAccToPrevMove) {
+            _currX.value = prevX
+            _currY.value = prevY
             prevX = x
             prevY = y
             visited[x][y] = true
@@ -73,6 +80,18 @@ class HomeViewModel : ViewModel() {
         for (i in 0..7) {
             if (prevX + xDir[i] == x && y == prevY + yDir[i])
                 return true
+        }
+        return false
+    }
+
+    fun checkMovePossible(): Boolean {
+        for (i in 0..7) {
+            val X = prevX + xDir[i]
+            val Y = prevY + yDir[i]
+            if(X >=0 && Y >= 0 && X < 5 && Y <5 && !visited[X][Y])
+                return true
+            else
+                continue
         }
         return false
     }

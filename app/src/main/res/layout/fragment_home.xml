@@ -18,40 +18,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button1"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="1" />
+            android:src="@drawable/knight_on_grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button2"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="2" />
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"
+            android:src="@drawable/grass"
+            android:scaleType="center"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button3"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="3" />
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"
+            android:src="@drawable/grass"
+            android:scaleType="center"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button4"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="4" />
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"
+            android:src="@drawable/grass"
+            android:scaleType="center"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button5"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="5" />
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"
+            android:src="@drawable/grass"
+            android:scaleType="center"/>
 
     </LinearLayout>
     <LinearLayout
@@ -66,40 +86,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll1">
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button6"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="6" />
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"
+            android:src="@drawable/grass"
+            android:scaleType="center"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button7"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="7" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button8"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="8" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button9"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="9" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button10"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="10" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
     </LinearLayout>
     <LinearLayout
@@ -114,40 +154,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll2">
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button11"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="11" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button12"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="12" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button13"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="13" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button14"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="14" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button15"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="15" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
     </LinearLayout>
     <LinearLayout
@@ -162,40 +222,60 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll3">
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button16"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="16" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button17"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="17" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button18"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="18" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button19"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="19" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button20"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="20" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"/>
 
     </LinearLayout>
     <LinearLayout
@@ -210,40 +290,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll4">
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button21"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="21" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button22"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="22" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall" />
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button23"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="23" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"/>
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button24"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="24" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"
+            />
 
-        <Button
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/button25"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_weight="1"
-            android:text="25" />
+            android:src="@drawable/grass"
+            android:scaleType="center"
+            android:clickable="true"
+            android:focusable="true"
+            app:shapeAppearanceOverlay="@style/RoundedImageViewSmall"/>
 
     </LinearLayout>
 

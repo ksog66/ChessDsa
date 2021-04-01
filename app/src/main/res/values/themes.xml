@@ -22,4 +22,9 @@
     <style name="Theme.ChessDsa.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ChessDsa.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="RoundedImageViewSmall">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">40%</item>
+    </style>
 </resources>
