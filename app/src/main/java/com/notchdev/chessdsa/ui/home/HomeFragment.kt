@@ -52,7 +52,6 @@ class HomeFragment : Fragment(),View.OnClickListener {
                 arrayOf(button21,button22,button23,button24,button25)
             )
         }
-
         return root
     }
 
@@ -77,7 +76,6 @@ class HomeFragment : Fragment(),View.OnClickListener {
     override fun onClick(view: View) {
         when(view.id){
             R.id.button2 -> {
-
                 getSafeOrNot(0, 1)
             }
             R.id.button3 ->{
@@ -150,13 +148,15 @@ class HomeFragment : Fragment(),View.OnClickListener {
                 getSafeOrNot(4,4)
             }
         }
-        if(!safeToMove)
+        if(!safeToMove) {
+            Log.d(TAG, "InvalidMove")
             Toast.makeText(requireContext(), "InvalidMove", Toast.LENGTH_SHORT).show()
-
+        }
 //        checkIfMovesPossible()
     }
 
     private fun getSafeOrNot(x: Int, y: Int) {
+        Log.d(TAG, "{$x,$y}")
         viewModel.isThisMoveSafe(x,y)
         viewModel.isSafe.observe({lifecycle}) {
             it?.let{
@@ -171,36 +171,7 @@ class HomeFragment : Fragment(),View.OnClickListener {
         if(safeToMove)
             boardBtn[x][y].isEnabled = false
     }
-
-    fun isThisMoveSafe(x:Int,y:Int) {
-        val validCoordinateMoves = validCoordinateMove(x,y)
-        val validMoveAccToPrevMove = prevMoveValidation(x,y)
-        Log.d("viewModel", "prevMoveValidation: $validMoveAccToPrevMove")
-        Log.d("viewModel", "validMove: $validCoordinateMoves")
-        if (validCoordinateMoves and validMoveAccToPrevMove){
-            prevX=x
-            prevY=y
-            visited[x][y]=true
-            safeToMove=true
-            ++noOfMoves
-            boardBtn[x][y].isEnabled=false
-        }
-        else{
-            safeToMove = false
-        }
-    }
-
-    private fun validCoordinateMove(x: Int, y: Int): Boolean {
-        return x>=0 && y>=0 && x<5  && y<5 && !visited[x][y]
-    }
-    private fun prevMoveValidation(x:Int,y:Int): Boolean {
-        for(i in 0..7){
-            if(prevX+xDir[i] == x && y==prevY+yDir[i])
-                return true
-        }
-        return false
-    }
-
+    
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
