@@ -4,9 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
@@ -38,6 +36,23 @@ class KnightTourFragment : Fragment() {
 
 
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.game_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_reset) {
+            initializeBoard()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -108,7 +123,11 @@ class KnightTourFragment : Fragment() {
         val isItPossible = viewModel.checkMovePossible()
         if (!isItPossible) {
             MaterialAlertDialogBuilder(requireContext()).apply {
-                setMessage("Game Over")
+                setTitle("Game Over")
+                val message = if (noOfMoves > highScore) {
+                    "Congratulations for the New HighScore of $highScore"
+                } else "Try Again"
+                setMessage(message)
                 setPositiveButton("Play Again") { _, _ ->
                     initializeBoard()
                 }
@@ -128,7 +147,7 @@ class KnightTourFragment : Fragment() {
                 putInt(HIGH_SCORE, noOfMoves)
             }
         }
-        sharedPreferences.getInt(HIGH_SCORE,highScore).let {
+        sharedPreferences.getInt(HIGH_SCORE, highScore).let {
             highScore = it
         }
     }

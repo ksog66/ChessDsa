@@ -16,6 +16,7 @@
         <action
             android:id="@+id/action_to_nqueen"
             app:destination="@id/nav_nqueen" />
+
     </fragment>
 
     <fragment
