@@ -23,6 +23,9 @@ class NqueenFragment : Fragment() {
     private var countQueen: Int = 0
     private var safeQueen: Int = 0
     private var coordinates = mutableListOf<Pair<Int, Int>>()
+
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,7 +33,7 @@ class NqueenFragment : Fragment() {
         _binding = FragmentNqueenBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(NqueenViewModel::class.java)
 
-        _binding?.apply {
+        binding.apply {
             boardBtn = arrayOf(
                 arrayOf(block1, block2, block3, block4, block5, block6),
                 arrayOf(block7, block8, block9, block10, block11, block12),
@@ -40,7 +43,7 @@ class NqueenFragment : Fragment() {
                 arrayOf(block31, block32, block33, block34, block35, block36)
             )
         }
-        return _binding?.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +67,7 @@ class NqueenFragment : Fragment() {
                                 .show()
                         }
                     }
-                    _binding?.queenCount?.text = countQueen.toString()
+                    binding.queenCount?.text = countQueen.toString()
                     updateGameStatus()
                 }
             }
@@ -116,7 +119,7 @@ class NqueenFragment : Fragment() {
         viewModel.initializeGame()
         countQueen = 6
         safeQueen = 0
-        _binding?.queenCount?.text = countQueen.toString()
+        binding.queenCount.text = countQueen.toString()
     }
 
     private fun updateBoard(i: Int, j: Int) {

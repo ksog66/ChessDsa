@@ -11,8 +11,8 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_to_knight_level"
-            app:destination="@id/nav_knight_level" />
+            android:id="@+id/action_to_knighttour"
+            app:destination="@id/nav_knighttour" />
         <action
             android:id="@+id/action_to_nqueen"
             app:destination="@id/nav_nqueen" />
@@ -29,16 +29,6 @@
         android:name="com.notchdev.chessdsa.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
-        android:id="@+id/nav_knight_level"
-        android:name="com.notchdev.chessdsa.ui.knightTour.KnightLevelFragment"
-        android:label="KnightTour"
-        tools:layout="@layout/fragment_knighttour_level" >
-        <action
-            android:id="@+id/action_to_knighttour"
-            app:destination="@id/nav_knighttour" />
-    </fragment>
 
     <fragment
         android:id="@+id/nav_knighttour"

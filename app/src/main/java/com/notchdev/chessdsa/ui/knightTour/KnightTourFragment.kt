@@ -1,11 +1,14 @@
 package com.notchdev.chessdsa.ui.knightTour
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,6 +21,11 @@ private const val TAG = "HomeFragment"
 
 class KnightTourFragment : Fragment() {
 
+    companion object {
+        const val PREF_GAME = "prefs_game"
+        const val HIGH_SCORE = "prefs_highScore"
+    }
+
     private lateinit var viewModel: KnightTourViewModel
     private var _binding: FragmentKnighttourBinding? = null
     private var safeToMove: Boolean = false
@@ -25,9 +33,10 @@ class KnightTourFragment : Fragment() {
     private var prevX: Int = 0
     private var prevY: Int = 0
     private var noOfMoves: Int = 0
+    private var highScore: Int = 0
+    private lateinit var sharedPreferences: SharedPreferences
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -35,6 +44,7 @@ class KnightTourFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        sharedPreferences = activity?.getSharedPreferences(PREF_GAME, Context.MODE_PRIVATE)!!
         _binding = FragmentKnighttourBinding.inflate(inflater, container, false)
         viewModel =
             ViewModelProvider(this).get(KnightTourViewModel::class.java)
@@ -48,20 +58,28 @@ class KnightTourFragment : Fragment() {
                 arrayOf(button21, button22, button23, button24, button25)
             )
         }
+        sharedPreferences.getInt(HIGH_SCORE, 0).let {
+            highScore = it
+        }
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        for(i in 0..4) {
-            for(j in 0..4) {
+        for (i in 0..4) {
+            for (j in 0..4) {
                 boardBtn[i][j].setOnClickListener {
-                    getSafeOrNot(i,j)
+                    getSafeOrNot(i, j)
                     if (!safeToMove) {
                         Log.d(TAG, "InvalidMove")
-                        Toast.makeText(requireContext(), "Hihihihih Can't Go there", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Hihihihih Can't Go there",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     checkIfMovesPossible()
+                    checkHighScore()
                 }
             }
         }
@@ -81,6 +99,8 @@ class KnightTourFragment : Fragment() {
             isEnabled = false
             setImageResource(R.drawable.knight_on_grass)
         }
+        binding.currScore.text = "0"
+        binding.highScore.text = highScore.toString()
         viewModel.initializeGame()
     }
 
@@ -102,6 +122,17 @@ class KnightTourFragment : Fragment() {
         }
     }
 
+    private fun checkHighScore() {
+        if (noOfMoves >= highScore) {
+            sharedPreferences.edit {
+                putInt(HIGH_SCORE, noOfMoves)
+            }
+        }
+        sharedPreferences.getInt(HIGH_SCORE,highScore).let {
+            highScore = it
+        }
+    }
+
     private fun getSafeOrNot(x: Int, y: Int) {
         Log.d(TAG, "{$x,$y}")
         viewModel.isThisMoveSafe(x, y)
@@ -116,11 +147,13 @@ class KnightTourFragment : Fragment() {
             }
         }
         if (safeToMove) {
+            binding.currScore.text = noOfMoves.toString()
             boardBtn[x][y].apply {
                 isEnabled = false
                 setImageResource(R.drawable.knight_on_grass)
             }
             updatePreviousMoveImage()
+
         }
     }
 
