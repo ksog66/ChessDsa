@@ -19,7 +19,6 @@ class NqueenFragment : Fragment() {
 
     private lateinit var viewModel: NqueenViewModel
     private lateinit var boardBtn: Array<Array<ImageView>>
-    private var safeToMove: Boolean = false
     private var _binding: FragmentNqueenBinding? = null
     private var countQueen: Int = 0
     private var safeQueen: Int = 0
