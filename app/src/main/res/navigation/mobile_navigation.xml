@@ -9,7 +9,14 @@
         android:id="@+id/nav_home"
         android:name="com.notchdev.chessdsa.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_to_knight_level"
+            app:destination="@id/nav_knight_level" />
+        <action
+            android:id="@+id/action_to_nqueen"
+            app:destination="@id/nav_nqueen" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +29,26 @@
         android:name="com.notchdev.chessdsa.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_knight_level"
+        android:name="com.notchdev.chessdsa.ui.knightTour.KnightLevelFragment"
+        android:label="KnightTour"
+        tools:layout="@layout/fragment_knighttour_level" >
+        <action
+            android:id="@+id/action_to_knighttour"
+            app:destination="@id/nav_knighttour" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_knighttour"
+        android:name="com.notchdev.chessdsa.ui.knightTour.KnightTourFragment"
+        android:label="KnightTour"
+        tools:layout="@layout/fragment_knighttour" />
+
+    <fragment
+        android:id="@+id/nav_nqueen"
+        android:name="com.notchdev.chessdsa.ui.nqueen.NqueenFragment"
+        android:label="N-Queen"
+        tools:layout="@layout/fragment_nqueen" />
 </navigation>

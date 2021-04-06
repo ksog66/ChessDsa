@@ -1,14 +1,11 @@
-package com.notchdev.chessdsa.ui.home
+package com.notchdev.chessdsa.ui.knightTour
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class KnightTourViewModel : ViewModel() {
 
 
     private var _isSafe = MutableLiveData<Boolean>()
@@ -73,6 +70,8 @@ class HomeViewModel : ViewModel() {
 
 
     private fun validCoordinateMove(x: Int, y: Int): Boolean {
+        //will remove this program driven code and make it event driven code
+        //no need to check for x and y they will be greater and lesser than 0 and 5 respectively
         return x >= 0 && y >= 0 && x < 5 && y < 5 && !visited[x][y]
     }
 
