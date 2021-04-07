@@ -82,7 +82,7 @@ class NqueenFragment : Fragment() {
                                 .show()
                         }
                     }
-                    binding.queenCount?.text = countQueen.toString()
+                    binding.queenCount.text = countQueen.toString()
                     updateGameStatus()
                 }
             }

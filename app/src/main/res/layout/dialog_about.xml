@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    tools:context=".ui.About.AboutDialog">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/devTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DEVELOPER ->"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/git_user"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:layout_toRightOf="@+id/devTv"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="5dp"
+            />
+        <TextView
+            android:id="@+id/githubTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Github ->"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_below="@+id/devTv"/>
+        <TextView
+            android:id="@+id/gitLinkTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/git_link"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toRightOf="@+id/githubTv"
+            android:layout_below="@+id/nameTv"/>
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

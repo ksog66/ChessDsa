@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.notchdev.chessdsa.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_play"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_to_knighttour"
@@ -19,17 +19,10 @@
 
     </fragment>
 
-    <fragment
+    <dialog
         android:id="@+id/nav_gallery"
-        android:name="com.notchdev.chessdsa.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.notchdev.chessdsa.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:name="com.notchdev.chessdsa.ui.About.AboutDialog"
+        tools:layout="@layout/dialog_about" />
 
     <fragment
         android:id="@+id/nav_knighttour"
