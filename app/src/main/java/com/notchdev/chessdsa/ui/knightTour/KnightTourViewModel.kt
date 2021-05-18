@@ -1,6 +1,5 @@
 package com.notchdev.chessdsa.ui.knightTour
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,34 +25,8 @@ class KnightTourViewModel : ViewModel() {
     private var yDir = arrayOf(1, -1, 2, -2, -1, 1, -2, 2)
 
     fun isThisMoveSafe(x: Int, y: Int) {
-//        if(noOfMoves!=0){
-//            val validMoveAccToPrevMove = prevMoveValidation(x,y)
-//            val validCoordinateMoves = validCoordinateMove(x,y)
-//            if (validMoveAccToPrevMove and validCoordinateMoves){
-//                prevX=xTODO("Not yet implemented")
-//                prevY=y
-//                visited[x][y]=true
-//                _isSafe.value = true
-//            } else{
-//                _isSafe.value = false
-//            }
-//        }
-//        else{
-//            val validCoordinateMoves = validCoordinateMove(x,y)
-//            if (validCoordinateMoves){
-//                prevX=x
-//                prevY=y
-//                visited[x][y]=1
-//                _isSafe.postValue(true)
-//            } else{
-//                _isSafe.postValue(false)
-//            }
-//        }
-        val validCoordinateMoves = validCoordinateMove(x, y)
         val validMoveAccToPrevMove = prevMoveValidation(x, y)
-        Log.d("viewModel", "prevMoveValidation: $validMoveAccToPrevMove")
-        Log.d("viewModel", "validMove: $validCoordinateMoves")
-        if (validCoordinateMoves and validMoveAccToPrevMove) {
+        if (!visited[x][y] and validMoveAccToPrevMove) {
             _currX.value = prevX
             _currY.value = prevY
             prevX = x
@@ -68,12 +41,6 @@ class KnightTourViewModel : ViewModel() {
         }
     }
 
-
-    private fun validCoordinateMove(x: Int, y: Int): Boolean {
-        //will remove this program driven code and make it event driven code
-        //no need to check for x and y they will be greater and lesser than 0 and 5 respectively
-        return x >= 0 && y >= 0 && x < 5 && y < 5 && !visited[x][y]
-    }
 
     private fun prevMoveValidation(x: Int, y: Int): Boolean {
         for (i in 0..7) {
